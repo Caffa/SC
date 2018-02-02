@@ -1,10 +1,13 @@
 package com.example.caffae.sc;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.widget.EditText;
+
+import com.shashank.sony.fancytoastlib.FancyToast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -34,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
     @OnClick(R.id.loginCardView)
     public void onViewClicked() {
 
-
         //DONE: Check against set values
         String id = loginScreenID.getText().toString();
         String password = loginScreenPW.getText().toString();
@@ -44,13 +46,19 @@ public class MainActivity extends AppCompatActivity {
         //TODO: this is a substitute so remove later
         if (id.equals("1002222")){
             if(password.equals("pwd")){
+                FancyToast.makeText(this,"Successful Login!",FancyToast.LENGTH_LONG,FancyToast.SUCCESS,true);
+
                 //TODO: go to next activity
+                Intent intent = new Intent(this, StudentMainActivity.class);
+                startActivity(intent);
+
             }
         }
 
 
         //alternative
-        //TODO: wrong 'pwd/id' toast
+        //DONE: wrong 'pwd/id' toast
+        FancyToast.makeText(this,"Wrong Id/Password !",FancyToast.LENGTH_LONG,FancyToast.ERROR,true);
 
     }
 }
